@@ -1,0 +1,38 @@
+id: frequency_shifter
+label: frequency_shifter_block
+category: '[GRC Hier Blocks]'
+
+parameters:
+-   id: frequency
+    label: Frequency
+    dtype: real
+    default: '0'
+    hide: none
+-   id: samp_rate
+    label: Sample Rate
+    dtype: real
+    default: '0'
+    hide: none
+
+inputs:
+-   label: in
+    dtype: complex
+    vlen: 1
+
+outputs:
+-   label: out
+    dtype: complex
+    vlen: 1
+
+templates:
+    imports: 'from frequency_shifter import frequency_shifter  # grc-generated hier_block'
+    make: "frequency_shifter(\n    frequency=${ frequency },\n    samp_rate=${ samp_rate\
+        \ },\n)"
+    callbacks:
+    - set_frequency(${ frequency })
+    - set_samp_rate(${ samp_rate })
+
+documentation: /home/can34557/.grc_gnuradio/frequency_shifter.py
+grc_source: /home/can34557/local/notes/gnu_radio/tutorials/frequency_shifter.grc
+
+file_format: 1
