@@ -130,7 +130,10 @@ To install and compile OOT modules, download these:
 sudo apt-get install gnuradio-dev cmake libspdlog-dev clang-format
 ```
 
-To create a OOT module use: `gr_modtool newmod module_name`
+To create a OOT module use: 
+```sh
+$ gr_modtool newmod module_name
+```
 This creates a directory with files and code to make up the OOT module.
 
 - **`apps/`**
@@ -145,10 +148,16 @@ This creates a directory with files and code to make up the OOT module.
 - **`python/`**: main python files are stored here
 
 ### Creating an OOT Block
-To add a block to the gr-custom_module use `gr_modtool add oot_block_name`. to remove use `gr_modtool rm oot_block_name`. to see other avialable commands use `gr_modtool`
+To add a block to the gr-custom_module use 
+```sh
+$ gr_modtool add oot_block_name
+$ gr_modtool rm oot_block_name          # to remove 
+$ gr_modtool                            # to see other avialable commands
+```
 
 When creating a new block, it will ask you a couple questions:
-- **Block Type**
+- Block Type
+    - **reference: <https://wiki.gnuradio.org/index.php?title=Types_of_Blocks>**
 - language (python/cpp)
 - copyright holder:
 - python QA Code

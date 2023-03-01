@@ -75,35 +75,35 @@ A **Dynamic Array** has a dynamic size, meaning that its size changes. They work
 
 - Get(i): return the element at location i*
 ```py
-if i < 0 or i >= size:				# check if the element i is inside the range of the array
-    error: index out of range				
-return arr[i]						# return the location of element i
+if i < 0 or i >= size:              # check if the element i is inside the range of the array
+    error: index out of range
+return arr[i]                       # return the location of element i
 ```
 - Set(i, val): set the element to val*
 ```py
-if i < 0 or i >= size:				# check if the element i is inside the range of the array
+if i < 0 or i >= size:              # check if the element i is inside the range of the array
     error: index out of range
-arr[i] = val						# return the value of element i
+arr[i] = val                        # return the value of element i
 ```
 - PushBack(val): adds val at the end
 ```py
-if size = capcity: 					# check if the array is full
-    allocate new_arr[2*capcity]		# create a new array twice the size of the old one
+if size = capcity:                  # check if the array is full
+    allocate new_arr[2*capcity]     # create a new array twice the size of the old one
     for i from 0 to size - 1:       # copy over the elements of the old arrays to the new
         new_arr[i] = arr[i]
-    free new_arr					# delete/clear/free up the old array
-    arr = new_arr					# update the array to the pointer of the new array
-    capacity = 2*capcity     		# update the capacity to the capacity of the new array
-arr[size] = val						# finally, add the element to the end of the array
-size = size + 1						# update the number of elements
+    free new_arr                    # delete/clear/free up the old array
+    arr = new_arr                   # update the array to the pointer of the new array
+    capacity = 2*capcity            # update the capacity to the capacity of the new array
+arr[size] = val                     # finally, add the element to the end of the array
+size = size + 1                        # update the number of elements
 ```
 - Remove(i): removes the element at location i
 ```py
-if i < 0 or i >= size:				# checks if the element if i is inside the range
+if i < 0 or i >= size:              # checks if the element if i is inside the range
     error: index out of range
-for j from i to size - 2:			# a loop to move over each element
+for j from i to size - 2:           # a loop to move over each element
     arr[j] = arr[j + i]
-size = size - 1						# updates the number of elemtents
+size = size - 1                     # updates the number of elemtents
 ```
 - Size(): returns the number of elements. Simply: 
 ```py
