@@ -3,7 +3,7 @@
 ----------------------------------------------------------
 **References: <https://www.programiz.com/sql> and <https://sqlbolt.com/>**
 
-## Retrive Data from a Database Table
+### Retrive Data from a Database Table
 To do this, use the `SELECT` statement. for example, the code below selects the `first_name` and `last_names` of all custumers in that table
 ```sql
 SELECT first_name, last_name 
@@ -42,11 +42,8 @@ FROM Customers;
 
 
 
-
-## Other
-
 ### SQL Operators
-reference: <https://www.programiz.com/sql/operators>
+**reference: <https://www.programiz.com/sql/operators>**
 
 - Equal to (`=`)
 - Greater than (`>`)

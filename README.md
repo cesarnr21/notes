@@ -82,4 +82,6 @@
 -----------------------------
 
 ## TO DO
+- [ ] created new directory and move all random files there.
+  > Deadline: finish and merge with **`feature/docker`** first
 - [ ] restructure `notes.md` file, move to other files
