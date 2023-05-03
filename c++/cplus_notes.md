@@ -1,25 +1,51 @@
 
 # C++ Language Notes
 
+- **to learn:**
+    - [ ] review the `#ifndef` and `#endif` macros for header files, etc. bottom of this site: <https://www.geeksforgeeks.org/header-files-in-c-cpp-and-its-uses/amp/>
+    - [ ] using the linker, working with header files
+    - [ ] using `extern`
+    - [ ] using **CMake** and **Make**
+    - [ ] multi-threading
+
+
+
 **References:**
 - **[Programiz: Learn C Programming](https://www.programiz.com/c-programming)**
-- **[Programiz: Learn C++ Programming](https://www.programiz.com/cpp-programming])**
+- **[Programiz: Learn C++ Programming](https://www.programiz.com/cpp-programming)**
 - **[LearnCPP](https://www.learncpp.com/)**
+    - [ ] chapter 6: scope, duration, and linkage
+    - [ ] chapter 7: just error  and chapter 20: for exceptions
+    - [ ] chapter 8: conversion and function overloading
+    - [ ] chapter 9: review pointers and chapter 12 for function pointers, chapter M smart pointers
+    - [ ] chapter 11: arrays and dynamic memory allocation
+    - [ ] chapter 13 : OOP, Chaper 16: object relationships, and Chapter 17: inheritance
+    - [ ] chapter 19: for templates
 
-Recursion: **<https://www.programiz.com/c-programming/c-recursion>**
+- **Recursion: <https://www.programiz.com/c-programming/c-recursion>**
 
 
 ## Intro
-- **Compiler** will seuquentially go through each source code, checks for errors and then it creates **object files**
+Notes on the c and c++ **[compilers and compiling methods](compiler.md)**
 
-### Basic Syntax
+### Basic Rules
+most systax is the same as `C`
 
-It looks like most of the things from C translate to C++
-One new thing: using namespace std;
+The `iostream` library included within the standard library is used for IO.
+```cpp
+#include <iostream>
 
-#### Inputs/Outputs
-example code: 
-```c++
+int main() {
+    int num;
+    std::cout << "Enter an integer: ";
+    std::cin >> num;   // Taking input
+    std::cout << "The number is: " << num << std::endl;
+    return 0;
+}
+```
+
+#### Namespaces
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -35,7 +61,7 @@ int main() {
 #### Type Conversion
 
 C++ allows us to convert from 1 data type to another
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -52,17 +78,17 @@ int main() {
 how often this will result in data loss. above for example, the output will be num_int = 9 and num = 9.99
 this kind of conversion is called implicit or automatic conversion
 
-**C++ Explicit Conversion**
+**cpp Explicit Conversion**
 explicit conversion is when the user manually changes the data type
 the best way to do this is using c-style type casting
 (data_type)expression;
-```c++
+```cpp
 int num_int = 26;
 double num_double;
 num_double = (double)num_int;
 ```
 there also is function-style casting: data_type(expression);
-```c++
+```cpp
 int num_int = 26;
 double num_double;
 num_double = double(num_int);
@@ -70,9 +96,9 @@ num_double = double(num_int);
 
 #### Function Overloading
 
-In C++ functions function the same way as they do in C. the only difference is that C++ can handle function overloading.
+In cpp functions function the same way as they do in C. the only difference is that cpp can handle function overloading.
 With **Function Overloading**, different functions can have the same name if they have a different number or different types of arguments(inputs) example these are all different functions:
-```c++
+```cpp
 int test() { }
 int test(int a) { }
 float test(double a) { }
@@ -80,7 +106,7 @@ int test(int a, double b) { }
 ```
 **Default Parameters** 
 When making a function, it is possible to provide default values for when a function is called without passing arguments. Example:
-```c++
+```cpp
 // two default arguments defined
 void display(char = '*', int = 3);
 
@@ -115,11 +141,11 @@ In the function above
 3. when `display('#', count)` is called with both arguments. In this case, default arguments are not used.
 
 #### C-Strings
-C++ support c-strings that work the same way strings work in c.they are simply char arrays. the last element of the array is `\0`
+cpp support c-strings that work the same way strings work in c.they are simply char arrays. the last element of the array is `\0`
 > note: when using cin >> to read a string, it will only read characthers until it encounters a space.
 example"
 
-```c++
+```cpp
 char str[100];
 cout << "Enter a string: ";
 cin >> str;
@@ -127,7 +153,7 @@ cout << "You entered: " << str << endl;
 
 ```
 to read a line of strings, including whitespaces, cin.get
-```c++
+```cpp
 char str[100];
 cout << "Enter a string: ";
 cin.get(str, 100);
@@ -136,7 +162,7 @@ cout << "You entered: " << str << endl;
 #### String Object
 Unlike c-strings, a string objecr has no fixed length
 to read a string object use the `getline()` function
-```c++
+```cpp
 string str;
 cout << "Enter a string: ";
 getline(cin, str);
@@ -145,7 +171,7 @@ cout << "You entered: " << str << endl;
 ```
 
 Differennces between the two:
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -177,7 +203,7 @@ void display(string s) {
 ```
 #### Structures and Functions
 Example: 
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -212,99 +238,13 @@ void displayData(Person p) {
 }
 ```
 
-### Different variables
 
-floating vs double: they are both used to represent decimals but double has twice the decimal places of floating.
-<long double> will always take at least double the memory bits of float or int
-
-string formatting with variables.
-- `int` → `%d`
-- `float` → `%f`
-- `char` → `%c`
-- `string` → `%s`
-- `poinhters` → `%p`
-
-**storage classes** if a variable is declared inside of a function, then it only exits inside that function and can only be used by that function.
-
-If a variable is declared outside of any function, then it is a global variable and can be used by function
-
-**static variables**
-The value of a static variable stays the same until the end of the program. example:
-```c++
-void display();
-
-int main() {
-    display();
-    display();
-}
-
-void display() {
-    static int c = 1;
-    c += 5;
-    printf("%d  ",c);
-}
-```
-in the function above, the first output will be 6 and the second will be 11. This is because when the value was increased to 6 at the first `display()`, the value of c stayed the same until it was increased again for second `display()`.
-
-#### strings
-strings are simply char arrays. the last element of the array is `\0`
->note: when using scanf to read a string, it will only read characthers until it encounters a space. example"
-
-```c
-char name[];
-printf("enter name:");
-scanf("%s", name);  //input Cesar Nunez
-printf("%s", name); //output will be Cesar
-```
-to read a line of strings, including whitespaces, use `fgets()` and `puts()`
-
-```c
-char name[30];
-printf("Enter name: ");
-fgets(name, sizeof(name), stdin);  /  /input Cesar Nunez
-printf("Name: ");
-puts(name);    // output will be Cesar Nunez
-```
-For commmonly used string functions use `#include <string>`
-
-More examples [here](https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1132/handouts/08-C++-Strings.pdf)
-
-#### Arrays
-An array is a variable that can store multiple values. 
-> note: the first value of the array is stored as element 0.
-
-```c
-int data[100]     /// type arrayname [size] 
-int mark[5] = {19, 10, 8, 17, 9}
-
-// make the value of the third element to -1
-mark[2] = -1;
-
-// make the value of the fifth element to 0
-mark[4] = 0;
-```
-to scan or print the value of an individual element use `scanf("%d", mark[i])`
-
-#### multi-dimensional arrays
-these are arrays if arrays. example: `int mark[3][4]` here mark is a two dimmesional 2D array that can store 12 elements, in 3 rows and 4 columns.
-
-In the same way you can declare a 3-dimmensional 3D array by `int mark[3][4][6]` that can store 72 elements, etc
-
-other ways to initialized and define arrays
-```c++
-int mark[2][3] = {{1,2,3},{4,5,6}};
-
-int mark[2][3][4] = {
-    {{3, 4, 2, 3}, {0, -3, 9, 11}, {23, 12, 23, 2}},
-    {{13, 4, 56, 3}, {5, 9, 3, 5}, {3, 1, 4, 9}}
-    };
-```
 
 ### Pointers
 **Pointers** are variables that store addresses rather than values
 
 for example: 
-```c++
+```cpp
 int* pc, c;  //
 c = 5;       // assign 5 as the value of c
 pc = &c;     // assign the address of c to pc
@@ -338,103 +278,6 @@ pc = &c;
 *pc = c;
 ```
 
-
-### Loops
-#### For Loop
-```c
-for (i = 1; i < 11; ++i) {
-  printf("%d ", i);
-}
-```
-> Note: also look for the difference between ++i and i++ 
-++i increments i and evaluates to the new value of i and 
-i++ evaluates to the old value of i, and increments i
-
-
-
-#### While and Do..While Loops
-
-> Note: the difference between the While and Do...while loops, is that the do...while loop will perform the loop at least once.
-
-**while**
-```c
-int i = 1;
-
-while (i <= 5) {
-  printf("%d\n", i);
-  ++i;
-}
-```
-**do while**
-```c
-do {
-printf("Enter a number: ");
-scanf("%lf", &number);
-sum += number;
-}
-while(number != 0.0);
-```
-#### Break and Continue inside of Loops
-The break; statement ends the loop. For example:
-```c
-for (i = 1; i <= 10; ++i) {
-      executable code
-
-      if (condition) {
-         break; //ends the loop
-      }
-   }
-```
-the continue; statement will end the current loop and start a new one. For example:
-```c
-for (i = 1; i <= 10; ++i) {
-  executable code
-
-  if (condition) {
-   continue; //goes back to 'for'
-  }
-}
-```
-
-
-#### Switch Function
-In addition, for the conditions in the 
-```c
-switch(variable) {
-    case(condition) :
-        //statements
-        break;
-    case(condition) :
-        //statements
-        break;
-    case(condition) :
-        //statements
-        break;
-    default:
-        //default statements
-  }
-```
->notes: this function will only work with constant variables such as integers and character strings (int and char)
-
-You can also combine cases by not using the 'break' at the end of each case. For example
-```c
-int number=5;
-
-switch (number) {
-    case 1: //if 1
-    case 2: //if 2
-    case 3: //if 3
-        printf("One, Two, or Three.\n");
-        break;
-    case 4: //if 4
-    case 5: //if 5
-    case 6: //if 6
-        printf("Four, Five, or Six.\n");
-        break;
-    default:
-        printf("Greater than Six.\n");
-}
-```
 
 #### Structures and Unions
 a structure is a collection of variables under a single. syntax:
@@ -515,13 +358,13 @@ void display(struct student s) {
 ## Objects and Classes
 
 **Classes** This is the blueprint for an object. syntax:
-```c++
+```cpp
 class className {
 //data, functions, or anything
 };
 ```
 example
-```c++
+```cpp
 class Room {
     public:
         double length;
@@ -538,8 +381,8 @@ class Room {
 
 };
 ```
-**Objects**to use the data and acces function defined in the class, we need to create objects. continuing the example above:
-```c++
+**Objects** to use the data and acces function defined in the class, we need to create objects. continuing the example above:
+```cpp
 // sample function
 void sampleFunction() {
     // create objects
@@ -553,7 +396,7 @@ int main(){
 ```
 the objects created above are room1, room2, room3, and room4
 example using classes and objects:
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 // create a class
@@ -586,9 +429,58 @@ int main() {
 }
 ```
 
+### Constructors
+They are a member function that initilizes an object, equivalent to the `__init__()` function in python. Usually `public` but it can also be `private`. it has the same as the class and does not have a return type. 
+
+> Note: for some reason, creating constructors with parameters require the parameters and the class attributes to have different names.
+
+Example:
+```cpp
+#include <iostream>
+
+class Room {
+    public:
+        // declare some attributes
+        float lenght;
+        float depth;
+        float height;
+        std::string name;
+        float area;
+
+        // declare and define constructor to initialize objects objects
+        Room(std::string name_hold, float len, float dep, float hgt) {
+            name = name_hold;
+            lenght = len;
+            depth = dep;
+            height = hgt;
+            area = cal_area();
+        }
+
+        float cal_area() {
+            return lenght * depth;
+        }
+
+        float cal_volume() {
+            return lenght * depth * height;        }
+};
+
+
+int main() {
+    Room room1("master bed", 15, 15, 12);
+
+    std::cout << room1.name << " lenght: " << room1.lenght << " and area: " << room1.area << std::endl;
+    std::cout << room1.name << " lenght: " << room1.lenght << " and area: " << room1.cal_area() << std::endl;
+
+    return 0;
+}
+
+
+
+```
+
 ### Private and Public Members
 When using the keyword `private`, the data memebers and functions from the class cannot be accessed by another function. Using the same example from above:
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -627,21 +519,12 @@ int main() {
 ```
 the keyword `public` on the other hand works exactly the opposite way.
 
-### Constructors
-They are a memebr function that is called when an object is created. it has the same as the class and does not have a return type. Example:
-```c++
-class  Wall {
-   public:
-    Wall() { // create a constructor
-        // code
-    }
-};
-```
+
 
 ### Inheritance
 
 It allows us to create a new class of objects derived from an existing class. the derived class inherits the features of the base class. examples below:
-```c++
+```cpp
 class Animal {
     // eat() function
     // sleep() function
@@ -654,7 +537,7 @@ class Dog : public Animal {
 above for example, the a class 'dogs' is derived from a base class 'animal'. the class dogs has all of the features of the base class.
 
 the program below shows some inheritance example
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -695,7 +578,7 @@ int main() {
 #### protected members
 they are like private members and cannot be accessed by other classes or functions. But protected can be accessed by classes derived from the base class.
 more examples:
-```c++
+```cpp
 class Base {
     public:
         int x;
@@ -726,7 +609,7 @@ class PrivateDerived: private Base {
 
 #### Multilevel Inheritance
 It is possible to derive a class from a derived class of another class. example:
-```c++
+```cpp
 class A { 
 ... .. ... 
 };
@@ -740,7 +623,7 @@ class C: public B  {
 
 #### Multiple Inheritance
 A class can also be derived from multiple base classes. examples bats are both winged animals and mammal
-```c++
+```cpp
 class Mammal {
   public:
     Mammal() {
@@ -768,7 +651,7 @@ int main() {
 ### Friend Functions and Friend Classes
 
 **Friend Functions and Classes** can access the private and protected data of a class
-```c++
+```cpp
 class Distance {
     private:
         int meter;
@@ -796,7 +679,7 @@ int main() {
 }
 ```
 > note: all member functions of a friend class become friend functions*
-```c++
+```cpp
 class ClassB;
 
 class ClassA {
@@ -810,8 +693,8 @@ class ClassB {
 }
 ```
 example of a friend class below
-```c++
-// C++ program to demonstrate the working of friend class
+```cpp
+// cpp program to demonstrate the working of friend class
 
 #include <iostream>
 using namespace std;
@@ -860,14 +743,14 @@ int main() {
 
 Template allow us to write generic programs. It is possible to create functions and classess to work with different data types. they are used ecause of reusability and flexibility
 syntax: 
-```c++
+```cpp
 template <class T>
 T someFunction(T arg) {
    ... .. ...
 }
 ```
 example:
-```c++
+```cpp
 // If two characters are passed to function template, character with larger ASCII value is displayed.
 
 #include <iostream>
@@ -900,7 +783,7 @@ return 0;
 }
 ```
 template class example:
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 

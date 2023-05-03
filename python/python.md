@@ -297,41 +297,189 @@ print('a' in y)
 **Python Operator Overloading**
 *some opperators can do multiples things in python. for example '+' sign can either add two numbers or merge two strings*
 
-Basic Functions
---------------------
-reference [https://www.programiz.com/python-programming/input-output-import]
-**print() function** for outputs. Can use str.format() to format the print.
-example:
-```py
->>> x = 5; y = 10
->>> print('The value of x is {} and y is {}'.format(x,y))
-The value of x is 5 and y is 10
-```
-above, the braces{} act as placeholders
-
-You can also format string like in c programming using %
-```py
->>> x = 12.3456789
->>> print('The value of x is %3.2f' %x)
-The value of x is 12.35
->>> print('The value of x is %3.4f' %x)
-The value of x is 12.3457
-```
-**input() function** it will take input as strings. it is possible to take the input as a string and then convert it to another dataType. example:
-```py
->>> num = input('Enter a number: ')
-Enter a number: 10
->>> num
-'10'
->>> int('10')
-10
->>> float('10')
-10.0
-```
 
 
-Flow Control: If statements and Loops
----------------------------------------
+
+## Python Object Oriented Programming (OOP)
+
+a **class** is a blueprint for an object. it contains all of the details about the name, colors, sizes, etc.
+an **object** is the instantiation of a class.
+
+imaginge you create a class like this.
+```py
+class operations():
+    def __init__(self, num):
+        # here declare stuff that should always be initiated
+        self.num = num
+
+    def square_num(self):
+        return self.num**2
+    
+    def root_num(self):
+        return int(self.num**(1/2))
+```
+then you can use the class like this.
+```py
+num = 4
+from cal import operations
+
+results = operations(num)
+print("The number squared", results.square_num())
+print("The the square root of the number", results.root_num())
+```
+
+defining a class in python using 'class'. you can create an object by calling the class similary to calling a function.
+```py
+class person:
+  "This is a person class"
+  age = 10
+
+  def greet(self):
+    print('Hello')
+
+#create a new object of the person class
+harry = person()
+```
+
+a **method** is a function inside the body of a class. they can be used to the define the behaviors of an object. examples:
+```py
+class parrot:
+      # class attribute
+      species = "bird"
+
+      # instance attribute
+      def __init__(self, name, age):
+          self.name = name
+          self.age = age
+
+      # instance method
+      def sing(self, song):
+          return "{} sings {}".format(self.name, song)
+
+      def dance(self):
+          return "{} is now dancing".format(self.name)
+
+# instantiate the parrot class
+blue = parrot("blue", 10)
+woo = parrot("woo", 15)
+
+#acceess the class attributes
+print("Blue is a {}".format(blue.__class__.species))
+print("Woo is also a {}".format(woo.__class__.species))
+
+# access the instance attributes
+print("{} is {} years old".format( blue.name, blue.age))
+print("{} is {} years old".format( woo.name, woo.age))
+
+# call out instance methods
+print(blue.sing("'Happy'"))
+print(blue.dance())
+```
+the output to the code above is:
+```
+Blu is a bird
+Woo is also a bird
+Blu is 10 years old
+Woo is 15 years old
+Blue sings 'happy'
+Blue is now dancing
+```
+above the class "parrot". the atributes of the class are defined inside the '__init__' method
+our two objects are blue and woo
+a class attribute is the same for all instances of the classes, example the species = "birds"
+each instance of a classes can also have unique attributes
+
+### Inheritance between classes
+
+inheritance is a way of creating a new class for using the details from an old class without modifying it. example:
+```py
+class bird:
+      def __init__(self):
+          print("bird is ready")
+
+      def whoIsThis(self):
+          print("bird")
+
+      def swin(self):
+          print("swim faster")
+
+class penguin(bird):
+      def __init__(self):
+          super().__init__
+          print("penguin is ready")
+
+      def whoIsThis(self):
+          print("penguin")
+
+      def run(self):
+          print("run faster")
+
+peggy = penguin()
+peggy.whoIsThis()
+peggy.swim()
+peggy.run()
+```
+above 'penguin' is the child class of 'bird. output: 
+```
+bird is ready
+penguin is ready
+penguin
+swim faster
+run faster
+```
+**Polymorphism**
+this allows us to use common interface for multiple forms of data. example:
+```py
+class parrot:
+      def fly(self):
+          print("parrot can fly")
+
+      def swim(self)
+          print("parrot can't swim")
+
+class penguin:
+      def fly(self):
+          print("penguin can't fly")
+
+      def swim(self)
+          print("penguin can swim")
+
+def flying_test()
+    bird.fly()
+
+blue = parrot()
+peggy = penguin
+
+flying_test(blue)
+flying_test(peggy)
+```
+output:
+```
+parrot can fly
+penguin can't fly
+```
+
+#### multiple inheritance
+
+a class in a python can be derived from multiple base classes. example:
+```py
+class class1:
+  pass
+
+class class2:
+  pass
+
+class class3(class1, class2):
+  pass
+```
+above, class3 is derived from both classes 1 and 2
+
+
+
+## Basic Functions
+
+### Flow Control: If statements and Loops
+
 **If statement example**
 in python, indentation is what determines what is part of the if statement. the body of the if statement is indicated by the indentation. The body starts with an indentation and the first unindented line marks the end.
 example:
@@ -411,8 +559,8 @@ print("the sum is ", sum)
 **while loop with else** they work the same way as they work for 'for loops'. they will only execute code when the while test_expression turns false
 the keyword 'break' will also end the while loop and discard the 'else' part
 
-Keywords: break and continue for loops, and pass statement
-----------------------------------------------------------------
+#### Keywords: break and continue for loops, and pass statement
+
 'break' will end the loop and move on to the next piece of code
 'continue' will end the current iteration of the loop and and the loop continues with the next iteration
 
@@ -429,8 +577,8 @@ def function(anything)
   pass
 ```
 
-Python Functions
--------------------------
+### Python Functions
+
 syntax for user-defined functions: 
 ```py
 def function_name(parameters):
@@ -476,8 +624,8 @@ greet("Monica", "Luke", "John")
 ```
 above, we passed multiple arguments into a function. the arguments formed a sequence, and then were passed into the function.
 
-Python Recursion
------------------------------
+### Python Recursion
+
 a recursion is the proces of defining something in terms of itself.
 a function can call another function, and it is possible for it to call itself. these are recursive functions. 
 a base condition is needed to make sure the recursion stops. example:
@@ -502,8 +650,8 @@ double = lambda x: x * 2
 print(double(5))
 ```
 
-Exceptions
--------------------
+### Exceptions
+
 an exception is raised when your program encounters an error. the critical operation that can go wrong is placed inside the 'try' block and the code that handles the exception is inside the 'except' block
 for example, the code below will divide 1 by values of a list. we import the 'sys' module to get the type of error.
 ```py
@@ -622,185 +770,32 @@ if not 5000 < salary < 15000:
     raise SalaryNotInRangeError(salary)
 ```
 
-Python Object Oriented Programming (OOP)
-------------------------------------------
-a **class** is a blueprint for an object. it contains all of the details about the name, colors, sizes, etc.
-an **object** is the instantiation of a class.
+### Comprehensions
+A way to create lists, dictioraries, and sets without using loops.
 
-imaginge you create a class like this.
+**Example:**
 ```py
-class operations():
-    def __init__(self, num):
-        # here declare stuff that should always be initiated
-        self.num = num
+# Create a list to be used in comprehensions
+numbers = [1, 2, 3, -3, -2, -1]
 
-    def square_num(self):
-        return self.num**2
-    
-    def root_num(self):
-        return int(self.num**(1/2))
-```
-then you can use the class like this.
-```py
-num = 4
-from cal import operations
+# Create a new list of these numbers’ squares
+mylist = [x*x for x in numbers][1, 4, 9, 9, 4, 1]
 
-results = operations(num)
-print("The number squared", results.square_num())
-print("The the square root of the number", results.root_num())
+# Create a new dictionary of these numbers’ exponentiation
+mydict = {x: pow(10, x) for x in numbers}
+# output {1: 10, 2: 100, 3: 1000, -3: 0.001, -2: 0.01, -1: 0.1}
+
+# Create a set of these numbers’ absolutes
+
+myset = {abs(x) for x in numbers}
+# output {1, 2, 3}
 ```
 
-defining a class in python using 'class'. you can create an object by calling the class similary to calling a function.
-```py
-class person:
-  "This is a person class"
-  age = 10
+### Python Iterators
 
-  def greet(self):
-    print('Hello')
-
-#create a new object of the person class
-harry = person()
-```
-
-a **method** is a function inside the body of a class. they can be used to the define the behaviors of an object. examples:
-```py
-class parrot:
-      # class attribute
-      species = "bird"
-
-      # instance attribute
-      def __init__(self, name, age):
-          self.name = name
-          self.age = age
-
-      # instance method
-      def sing(self, song):
-          return "{} sings {}".format(self.name, song)
-
-      def dance(self):
-          return "{} is now dancing".format(self.name)
-
-# instantiate the parrot class
-blue = parrot("blue", 10)
-woo = parrot("woo", 15)
-
-#acceess the class attributes
-print("Blue is a {}".format(blue.__class__.species))
-print("Woo is also a {}".format(woo.__class__.species))
-
-# access the instance attributes
-print("{} is {} years old".format( blue.name, blue.age))
-print("{} is {} years old".format( woo.name, woo.age))
-
-# call out instance methods
-print(blue.sing("'Happy'"))
-print(blue.dance())
-```
-the output to the code above is:
-```
-Blu is a bird
-Woo is also a bird
-Blu is 10 years old
-Woo is 15 years old
-Blue sings 'happy'
-Blue is now dancing
-```
-above the class "parrot". the atributes of the class are defined inside the '__init__' method
-our two objects are blue and woo
-a class attribute is the same for all instances of the classes, example the species = "birds"
-each instance of a classes can also have unique attributes
-
-Inheritance between classes
-------------------------------
-inheritance is a way of creating a new class for using the details from an old class without modifying it. example:
-```py
-class bird:
-      def __init__(self):
-          print("bird is ready")
-
-      def whoIsThis(self):
-          print("bird")
-
-      def swin(self):
-          print("swim faster")
-
-class penguin(bird):
-      def __init__(self):
-          super().__init__
-          print("penguin is ready")
-
-      def whoIsThis(self):
-          print("penguin")
-
-      def run(self):
-          print("run faster")
-
-peggy = penguin()
-peggy.whoIsThis()
-peggy.swim()
-peggy.run()
-```
-above 'penguin' is the child class of 'bird. output: 
-```
-bird is ready
-penguin is ready
-penguin
-swim faster
-run faster
-```
-**Polymorphism**
-this allows us to use common interface for multiple forms of data. example:
-```py
-class parrot:
-      def fly(self):
-          print("parrot can fly")
-
-      def swim(self)
-          print("parrot can't swim")
-
-class penguin:
-      def fly(self):
-          print("penguin can't fly")
-
-      def swim(self)
-          print("penguin can swim")
-
-def flying_test()
-    bird.fly()
-
-blue = parrot()
-peggy = penguin
-
-flying_test(blue)
-flying_test(peggy)
-```
-output:
-```
-parrot can fly
-penguin can't fly
-```
-
-multiple inheritance
-------------------------
-a class in a python can be derived from multiple base classes. example:
-```py
-class class1:
-  pass
-
-class class2:
-  pass
-
-class class3(class1, class2):
-  pass
-```
-above, class3 is derived from both classes 1 and 2
-
-Python Iterators
--------------------------
 an iterator is an object that can be iterated upon. iterable objects are list, tuples, strings, etc. 
-using the iter() function in conjuntion with an iterable object returns an iterator. 
-also using the next() function will iterate throught all the items of an iterator, until there is no more data. example:
+using the `iter()` function in conjuntion with an iterable object returns an iterator. 
+also using the `next()` function will iterate throught all the items of an iterator, until there is no more data. example:
 ```py
 # define a list
 my_list = [4, 7, 0, 3]
@@ -829,10 +824,10 @@ next(my_iter)
 ```
 a way better way of doing the thing above is using a 'for loop' to print every element
 
-python generator
-----------------------
-use a 'yield' statement instead of a 'return'. a function with atleast one 'yield' statement is a generator
-the different between 'return' and 'yield'
+### python generator
+
+use a `yield` statement instead of a `return`. a function with atleast one `yield` statement is a generator
+the different between `return` and `yield`
 return: the return statement terminate the function completely
 yield: the yield statement will pause the function, and if the function is called again, it will resume where it left off. example:
 ```py
@@ -878,14 +873,14 @@ for char in rev_str("hello"):
 ```
 output: olleh
 
-## Python Closures
+### Python Closures
 
-[References] [https://www.programiz.com/python-programming/closure]
+References: <https://www.programiz.com/python-programming/closure>
 A nested function is a function defined inside another function
 
-## Python Decorator
+### Python Decorator
 
-[contrinue] [https://www.programiz.com/python-programming/decorator]
+contrinue: <https://www.programiz.com/python-programming/decorator>
 A decorator can be used to add functionality to an existing code. this is also called **metaprogramming**
 
 A function can be passed to another function as an argument. Example:
@@ -919,10 +914,10 @@ new()
 # calling 'new()' will make that equal, and a function can return another function
 ```
 
-## Python Regular Expression (RegEx)
+### Python Regular Expression (RegEx)
 
 **Reference**
-[Programiz] [https://www.programiz.com/python-programming/regex]
+Programiz: <https://www.programiz.com/python-programming/regex>
 Uses the **re** module <import re>
 A **regular expression** is a sequence of characters that defines a search pattern. For example
 ```py
@@ -938,17 +933,11 @@ else:
   print("Search unsuccessful.") 
 ```
 
-Keywords
------------
-**assert**
-**append**
 
 
+## File Operations with Python
 
-# File Operations with Python
-
-Steps: Open a file - read or write - close file
-[https://www.programiz.com/python-programming/file-operation]
+Steps: Open a file - read or write - close file: <https://www.programiz.com/python-programming/file-operation>
 **Open and closing files**
 Use the open function. for example:
 ```py
@@ -1016,7 +1005,7 @@ we can change our current position using the seek() and tell() functions
 >>> readline() #read an individual line
 ```
 
-# Working with CSV Files
+### Working with CSV Files
 
 CSV -> comma separated value
 [https://www.programiz.com/python-programming/csv]
@@ -1092,34 +1081,11 @@ with open('players.csv', 'w', newline='') as file:
     writer.writerow({'player_name': 'Ding Liren', 'fide_rating': 2801})
 ```
 
-# Working with Directories and Files from Python Command line
-
-Use the 'os' module by <import os>
-```py
->>> import os
-#to get current directory
->>> os.getcwd()
-#changing directories
->>> os.chir()
-#list contents of Directory
->>> os.listdir()
-#make a new directory
->>> os.mkdir('name')
-#renaming a directory
->>> os.listdir('old_name', "new_name")
-#remove a file
->>> os.remove('file')
-#remove an empty directory
->>> os.rmdir('directory')
-#remove a directory with files
->>> import shutil
->>> shutil.rmtree('directory')
-```
 
 
-# Useful Python Libraries
+## Useful Python Libraries
 
-## unitest and pytest
+### unitest and pytest
 for testing code, use `unittest`
 to run unittest without `pytest`, use:
 ```py
@@ -1127,7 +1093,7 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-## Math Library
+### Math Library
 
 use <import math>
 
@@ -1151,7 +1117,7 @@ print "Square of {0} is {1} ".format (number, square)
 **cos or sin**  ------> math.cos(n)
 **exponential** ------> math.exp(n)
 
-## Random Library
+### Random Library
 picks random things. example of uses below:
 ```py
 import random

@@ -41,27 +41,29 @@ Difference: `.gitignore` is pushed to the repo whereas `.git/info/exclude` is no
 ---------------------------------------------------
 
 # Basic Instructions:
-To see basic commands use `git --help`. To see help with specific command, do `git <command> --help`
+To see basic commands use `git --help`. To see help with specific command, do `git [ command ] --help`
 - `git init`: creates a new repository
 - `git clone`: clones the repository to the current directory
 - `git status`: shows you the changes made and the ones that are added
-- `git add <filename.filetype>`: adds the actions to the working tree
+- `git add [ filename.filetype ]`: adds the actions to the working tree
     - `git add --all` to add all changes to working tree
-    - `git restore --staged <file_name>` to remove from working tree
+    - `git restore --staged [ file_name ]` to remove from working tree
 - `git branch`: shows you the lists of branches and highlights current branch
     - `git branch -r` shows all remote branches
-- `git branch <branch_name>`: creates a new branch
-> Note: this not add a remote branch. to do this use the command:*`git push --set-upstream origin <branch name>`*
+- `git branch [ branch_name ]`: creates a new branch
+> Note: this not add a remote branch. to do this use the command:*`git push --set-upstream origin [ branch name ]`*
 
-- `git branch -d <branch_name>`: deletes the branc
+- to create a new branch without any commits: `git branch --oprhan`
+
+- `git branch -d [ branch_name ]`: deletes the branc
 > Note: this not delete the remote branch on the repository. this can be done the remote reposioty
 
-- `git checkout <branch_name>`: switches you to the selected branch
+- `git checkout [ branch_name ]`: switches you to the selected branch
 - `git pull`: it will download content from the repository and update the local repo to match it
     - `git pull --all` will pull from all remote branches 
 - `git push`: makes the changes permanent and publishes them in the branch
 - `git commit`: commits the changes to the branch
-- `git merge <branch_name>`: brings the changes from that branch into the current branch
+- `git merge [ branch_name ]`: brings the changes from that branch into the current branch
 - `git log` shows all commit history, displays commit messages, author, and date/time
 - `git clean` Remove untracked files from the working tree
 - `git diff` shows changes before file is added to working tree
@@ -75,17 +77,35 @@ $ git push -u origin main
 ```
 
 ### Git Pull vs Fetch
+`git fetch` will get changes from the remote branch (how to view these?)
 
-### Difference between HEAD and main
+`git pull` on will perform both `git fetch` and `git merge`
+
+
+### Difference between HEAD, remote, and main
 
 ### Squash Commits
 **[Link](https://stackoverflow.com/questions/5308816/how-can-i-merge-multiple-commits-onto-another-branch-as-a-single-squashed-commit)**
 ```sh
-$ git reset soft <brach_name>/<commit>      # deletes all commits from then but keeps changes
+$ git reset soft [ brach_name or commit ]      # deletes all commits from then but keeps changes
 # then commit all changes as a single commit, then push
 $ git commit -m 'commit_message'
 $ git push
 # note: if pushing to a remote branch with squashed commits, then:
+$ git push --force
+```
+
+### Squash Commits and Rebase with Main
+```sh
+# first check changes that have taken places since the branches separated
+$ git log HEAD..main
+
+# review the commits and squash them
+$ git rebase -i main
+
+# use to check the new squashed git log
+$ git log main..HEAD
+
 $ git push --force
 ```
 

@@ -1,10 +1,14 @@
 # Machine Learning and Artificial Intelligence
 
+**References**
+* Hands on Machine Learning with Scikit-Learn, Keras & TensorFlow: <https://www.knowledgeisle.com/wp-content/uploads/2019/12/2-Aur%C3%A9lien-G%C3%A9ron-Hands-On-Machine-Learning-with-Scikit-Learn-Keras-and-Tensorflow_-Concepts-Tools-and-Techniques-to-Build-Intelligent-Systems-O%E2%80%99Reilly-Media-2019.pdf>
+
+
 ### Terminology
 Terminology on Google's course: <https://developers.google.com/machine-learning/crash-course/framing/ml-terminology>
 
-- **Label:** the thing we are predicting, a variable, example: `the future price of wheat`. The `y-variable`
-- **Feature:** it is an input variable. a simple model might use a single feature or millions of features. The `x-variable`
+- **Label:** the thing we are predicting, a variable, example: `the future price of wheat`. The $\textbf{y variable}$
+- **Feature:** it is an input variable. a simple model might use a single feature or millions of features. The $\textbf{x variable}$
     - **Example** is a partical instance of data X: Two kinds:
         - A *labeled example* includes both the features and the label
         - An *unlabeled example* only includes the features and not the label
