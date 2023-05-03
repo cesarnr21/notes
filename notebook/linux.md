@@ -5,6 +5,8 @@
 - To open the terminal shortcut `CTRL` + `ALT` + `T`
 - To suspend a command use `CTRL` + `Z`
 - to kill command use `CTRL` + `C`
+- To reverse search and search previous commands: `CTRL` + `R` 
+- To clear terminal line `CTRL` + `U` and use `CTRL` to `Y` to paste
 - To list the running jobs/commands use `jobs`
 - To kill an ongoing job/command use `kill %#` with the '#' number you got from `jobs`
 - To delete a file `rm filename.filetype`
@@ -18,30 +20,60 @@
 - To move to the previous directory use `cd -`
 
 - To open a file with a default application `xdg-open filename.filetype`
-- To open a folder/directory with the file manager use `xdg-open directory`
+- To open a folder/directory with the file manager use `xdg
+-open directory`
 - To open the current directory in the file manage use `xdg-open .`
-- To open a file with sublime text `subl filename.filetype`
-- To see where a package is intalled `dpkg -L packagename`
 - Print IP addressess `hostname -I`
 
-### Learn more about
+### Expand Commands
+- save command output to file: 
+    ```sh
+    $ [ command ] > [ filename ]
+    ```
+    creates file and if it already exits overwrites it. To append instead of overwriting, use `>>`
+
+- output to terminal and also save to file, use `tee` syntax:
+    ```sh
+    $ [ command ] | tee [ file_name1 file_name2 ]
+    ```
+    - option `-a` to append
+    - to discard terminal output: 
+    ```sh
+    $ [ command ] | tee [ file_name ] >/dev/null
+    ```
+    - to save output to file owned by root, use `sudo` before `tee`
+    ```sh
+    $ [ command ] | sudo tee [ file_name1 ]
+    ```
+
+## Other Utilities
 - `grep`
 - `systemctl`
+- `wget`
+- `curl`
+- `ldconfig` and how it's used for building and linking 
+
+#### dpkg
+- To see where a package is intalled `dpkg -L [ package_name ]`
+- To install a package in a `.deb`  file, use `sudo dpkg -i [ file_path/file.deb ]`
 
 ### find and locate
-**find syntax: `find <start_dir> <options> <search term>`**
+**find syntax:**
+```sh
+$ find [ start_dir ] [ options ] [ search term ]
+```
 - **star dir** can be either
     - `/` for whole system
     - `.` for current
     - `~` for home
 - To find a file by name in current `find . -name filename` (case sensitive)
   - not case sensitive: `find . -iname filename`
-
-**locate sysntax: `locate <option> filename`**
+- to remove files, use `-delete` option at the end
+**locate sysntax: `locate [ option ] filename`**
 `locate` is faster than `find` but will scan the entire file system
 can use `locate -c filename` to count all instances
 
-## SSH and SCP
+### SSH and SCP
 
 To use ssh `ssh username@ip.address`
 
@@ -62,10 +94,10 @@ $ scp -C -r /home/user/path user@ip.address:/home/user/path
 ```
 
 
-## VNC Server
+### VNC Server
 **[setup instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04)** for TightVNC server
 
-### Usage
+#### Usage
 - To create a new 'X' VNC Desktop
     ```sh
     $ vncserver
@@ -81,10 +113,10 @@ $ scp -C -r /home/user/path user@ip.address:/home/user/path
 
 connect directly using `vnc://remote_ip_address:port`
 
-### Establish Secure Connection Using SSH
+#### Establish Secure Connection Using SSH
 examples command:
 ```
-$ ssh -L 5900:localhost:5900 -C -N -l USER <ip_address> -v
+$ ssh -L 5900:localhost:5900 -C -N -l USER [ ip_address ] -v
 ```
 
 Then, on Mac open **Screen Sharing** and connect to: `vnc://localhost:5900`
@@ -104,7 +136,8 @@ To enter commands, it is imporant to be in command mode
 - `delete` to just delete
 - `u` to undo changes
 - `CRTL` + `r` to reapply changes
-- To search use `/<word>` and then either `n` or `N` to keep searching for the next instance of the pattern
+- To search use `/[ word ]` and then either `n` or `N` to keep searching for the next instance of the pattern
+- To go to line use: `[ line# ]G`. example to go line 124, use: `124G`
 - To move foward use `w` and to move backward use `b`
 
 #### Visual Modes
@@ -114,6 +147,20 @@ To enter commands, it is imporant to be in command mode
 - To **comment multiple lines**, enter visual block and select all lines, then `SHIFT` + `i` to enter insert mode, add `#` from the first line, then `ESC` and after a moment, the change will take place.
     - To uncomment, select the `#` and the spaces colums, then just delete.
 - To **indent multiple lines**, enter visual block, select lines, then insert mode with `SHIFT` + `i`, add indentation, then `ESC`.
+
+#### Find and Replace
+##### quickest way
+1. search for word using `/[ word ]`
+2. type in `cgn` which will delete the searched word, and enter `insert mode`, replace with `[new word]`
+3. then `esc` and keep navigating through the searched word, using `n`/`N`.
+    - pressing `.` will automatically replace the current searched word with the `[new word]`
+
+##### advanced
+syntax: `:s/[ search_word ]/[ replacement ]/[ options ]`
+- to replace all occurances in one line use `g` option
+    `:s/[ search_word ]/[ replacement ]/g`
+- entire file: `:%s/[ search_word ]/[ replacement ]/g`
+- within lines: `:[start_line][end_lind]s/[ search_word ]/[ replacement ]/g`
 
 ### Configuring Vim
 Edits file in `~/.vimrc`
@@ -182,20 +229,23 @@ there is more to learn about shell files and what you can do with them.
 what does this entail, difference between `bash file.sh` and `./file.sh`?
 **<https://stackoverflow.com/questions/27494758/how-do-i-make-a-python-script-executable>**
 
-- to make a file an executetable: `sudo chmod +x <file_name>`
-- to remove executetable profile from file: `sudo chmod -x <file_name>`
+- to make a file an executetable: `sudo chmod +x [ file_name ]`
+- to remove executetable profile from file: `sudo chmod -x [ file_name ]`
 
 ## Cron Jobs
-These are used on Linux/Mac? to schedule tasks
-check status with:
-```sh
-$ sudo systemctl status cron.service
-```
+nice overview: <https://serverfault.com/questions/449651/why-is-my-crontab-not-working-and-how-can-i-troubleshoot-it?newreg=fbdb96de785143f1a1ca0290d42c4e4e>
+- **cron** is the daemon that executed schedule commands
+    check service status with:
+    ```sh
+    $ sudo systemctl status cron.service
+    ```
+- **crontab** is the program used to modify the user's contrab file
+- **crontab file** is user specific and contains the intruction for **cron**
 
 ### Systax/Commands
-Cron jobs are saved as crontab files: to use do `crontab -<option>`
+Cron jobs are saved as crontab files: to use do `crontab -[ option ]`
 
-- `-a <file_name>` creates a new crontab file
+- `-a [ file_name ]` creates a new crontab file
 - `-e` edit crontab file and creates it if it doesn't exits
 - `-l` shows the crontab file
 - `-r` deletes the crontab file
@@ -203,14 +253,14 @@ Cron jobs are saved as crontab files: to use do `crontab -<option>`
 
 once inside the crontab file the systax goes like:
 ```sh
-<minute> <hour> <day> <month> <weekday> command
+[ minute ] [ hour ] [ day ] [ month ] [ weekday ] command
 ```
 
 the symbol `*` in any of the timing fields stands for any. to write a cron job to be executed every minute, do:
 ```sh
-* * * * * /path/python3 /full/path/script.py >> /home/cesar/tmp/c-job/log.out
+* * * * * [ commands]
 
-# or for bash
+# could look like this
 * * * * * /bin/bash /full/path/script.sh >> /path/log.out
 ```
 
@@ -218,112 +268,3 @@ To help with timing setup, use this website: **<https://crontab.guru/>**
 
 > **Keep in Mind**
 > Cron does not load `.bashrc` so it may be useful to source if the scripts require env variables set there
-
-
-## Make & Makefiles
-
-**Reference: <https://opensource.com/article/18/8/what-how-makefile>**
-
-Use makefiles to build/compile projects. 
-Parts of a Makefile:
-- **Target:** works like a function or declaring a function
-- **Prerequisites/Dependencies:** 
-- **Recipe:** The recipe use prerequisites to make a target
-an example with multiple targets and prerequisites.
-
-  ```makefile
-  # the prerequisites below are anther sub target 'sub_target' and a source c file
-  fina_target: sub_target final_target.c # our final target
-    recipe_to_create_final_target
-
-  sub_target: sub_target.c
-    recipe_to_create_sub_target
-  ```
-**Multiple Targets:** with mutliple targets, the first target will be assigned as the default target and it will be the only one executed.
-```makefile
-say_hello: # default target
-  @echo "Hello World"
-
-generate: 
-  @echo "Creating empty text files"
-  touch file-{1..10}.txt
-
-clean:
-  @echo "Cleaning up.."
-  rm *.txt
-```
-the output of the makefile above will only be: `Hello World`
-to set the default target use
-```sh
-.DEFAULT_GOAL := target_name
-```
-
-Now let's run multiple targets. use `all` as the default target and call as sub target as you want
-```makefile
-all: say_hello generate # call sub targets say_hello and 
-
-say_hello:
-  @echo "Hello World"
-
-generate:
-  @echo "Creating empty text files..."
-  @touch file-{1..10}.txt
-
-clean:
-  @echo "Cleaning up..."
-  rm *.txt
-
-.PHONY: all say_hello generate clean
-```
-
-### Variables and Patterns
-declaring a variable for a makefile
-```makefile
-cc := gcc
-```
-
-[example](https://opensource.com/article/18/8/what-how-makefile)
-```makefile
-# Usage:
-# make        # compile all binary
-# make clean  # remove ALL binaries and objects
-
-.PHONY = all clean
-
-CC = gcc                        # compiler to use
-
-LINKERFLAG = -lm
-
-SRCS := foo.c
-BINS := foo
-
-all: foo
-
-foo: foo.o
-  @echo "Checking.."
-   gcc -lm foo.o -o foo
-
-foo.o: foo.c
-  @echo "Creating object.."
-  gcc -c foo.c
-
-clean:
-  @echo "Cleaning up..."
-  rm -rvf foo.o foo
-```
-another use of a variable can be used to group multiple things together for example:
-```makefile
-# variables
-cc := gcc
-objects := main.o kbd.o command.o display.o insert.o search.o files.o utils.o
-
-# the target 'edit' will execute all the other targets
-edit : $(objects)
-  cc -o $(objects)
-```
-
-
-## CMake
-**difference between Make and CMake?**  
-CMake is higher level than make, and can actually be used to generate Makefiles. It is used more for cross-platform applications. Makefiles for Linux will often not work on MacOS and will not work on Windows, whereas CMake can be used to generated platform specfic Makefiles
-

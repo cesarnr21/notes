@@ -1,14 +1,15 @@
 
 # Docker
 
--------------------------------------------------------
+**references**
+- Docker inner workings: intro to namespaces: <https://www.youtube.com/watch?v=-YnMr1lj4Z8>
 
 ## General Use
 1. Write a **[Dockerfile](#dockerfiles)**
 
-2. To build an image from a Dockerfile, use `docker build -t <container_name> .` with the `.` to specify the `Dockerfile` is in the current directory.
+2. To build an image from a Dockerfile, use `docker build -t [ container_name ] .` with the `.` to specify the `Dockerfile` is in the current directory.
     ```sh
-    $ docker build -t <image_name> .
+    $ docker build -t [ image_name ] .
     $ docker image ls                     # will show a list of images
     ```
     Can also help to build docker images using scripts.
@@ -21,7 +22,7 @@
     daystr=$(date +%a)
 
     # use if Dockerfile has a diffent name
-    DOCKERFILE=<docker_file_name>
+    DOCKERFILE= [ docker_file_name ]
     # also need to use the -f option
 
     echo "Building docker image with build options: $@"
@@ -37,10 +38,13 @@
 
     exit 0
     ```
-
+    - To build an image from a compressed file, run:
+    ```sh
+    $ docker load < [ compressed_file.tar.gz ]
+    ```
 3. Once the image is created, it can be ran as a container. 
     ```sh
-    $ docker run <image_name>
+    $ docker run [ image_name ]
     ```
     To set all options, might be helpful to use a script to run containers:
     ```sh
@@ -60,14 +64,14 @@
         -v "$WORK_PATH:$GNU_HOME/workspace/" \
         -v "$HOME/.bashrc:$GNU_HOME/.bashrc" \
         -v "$HOME/.login_message:$GNU_HOME/.login_message" \
-        <image_name> bash
+        [ image_name ] bash
     ```
 
 4. To stop a container, use `stop`
     ```sh
     $ docker container ls               # will show a list of containers
     $ docker ps                         # will show all containers running
-    $ docker stop <container_name>
+    $ docker stop [ container_name ]
     ```
 
 > **intructions below are optional**
@@ -75,14 +79,28 @@
 5. Docker can also be use some server applications, these are different than the intructions above.
     After the image is built, the container is now a REST server and will run in a lopp waiting for request. The container is running in an isolated enviroment (including networking) so to access the container, an access port has to be published to the local network.
     ```sh
-    $ docker run --publish 8000:8000 <image_name>
+    $ docker run --publish 8000:8000 [ image_name ]
     ```
 
 6. Make a POST request using `curl`
     ```sh
-    $ docker run --publish 8000:8000 <image_name>
+    $ docker run --publish 8000:8000 [ image_name ]
     ```
 
+
+### More commands
+- To remove an image use
+    ```sh
+    $ docker image rm [ image_name ] # sometimes --force option will be needed
+    ```
+
+- To remove all lingerering, and failed images, use
+    ```sh
+    $ docker image prune # --force option is also available here
+    ```
+    this will remove any docker that isn't named/tagged
+
+---
 
 ## Docker Notes
 Docker is used to develop, release, and run applications. An application can be packedged and ran in a isolated enviroment called a **container**.
@@ -150,4 +168,6 @@ COPY --from=0 /go/src/github.com/alexellis/href-counter/app ./
 CMD ["./app"]  
 ```
 
+---
 
+## Docker Compose
