@@ -23,6 +23,9 @@
 #### New skills
 **tiktok: <https://www.tiktok.com/@frankniu/video/7202811273690598661?_r=1&_t=8aBbxNXFOaU>**
 
+- building complex python applications: <https://www.cosmicpython.com/>
+    - free: <https://www.cosmicpython.com/book/preface.html>
+    - github repo: <https://github.com/cosmicpython/book>
 - tech inteview handbook: <https://www.techinterviewhandbook.org/>
 - system design primer: <https://github.com/donnemartin/system-design-primer>
 - the amazon star method: <https://www.amazon.jobs/es/landing_pages/in-person-interview>
