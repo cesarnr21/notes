@@ -14,13 +14,12 @@
 
 
 ## TO DO
-- [ ] write a script to scan for files for contents and paste them up there.
-    - something like the [markdown formattter](https://github.com/cesarnr21/vault/blob/main/vault/mkdwn.py) you wrote for individual files but for the entire repository
-- [ ] start using git pre-commit hooks, to stop compiled jupyter cells from being uploaded to repo
-- [ ] go throught and this and fill in any blanks: **[teach yourself computer science](https://teachyourselfcs.com/#networking)**
-- [ ] add this game to javascritp folder: <https://play.elevatorsaga.com/>
+* [ ] write a script to scan for files for contents and paste them up there.
+    * something like the [markdown formattter](https://github.com/cesarnr21/vault/blob/main/vault/mkdwn.py) you wrote for individual files but for the entire repository
+* [ ] start using git pre-commit hooks, to stop compiled jupyter cells from being uploaded to repo
+* [ ] go throught and this and fill in any blanks: **[teach yourself computer science](https://teachyourselfcs.com/#networking)**
 
-#### New skills
+### New skills
 **tiktok: <https://www.tiktok.com/@frankniu/video/7202811273690598661?_r=1&_t=8aBbxNXFOaU>**
 
 - building complex python applications: <https://www.cosmicpython.com/>
@@ -47,26 +46,46 @@
     - look for `dynamic programming project based learning`
     - <https://medium.com/javarevisited/6-best-dynamic-programming-courses-for-coding-interviews-14744060923c>
 
-- Data ETL (Extract, Transform, Load)
+* Data ETL (Extract, Transform, Load)
+* the odin project: <https://www.theodinproject.com/paths>
+    * typescript: <https://roadmap.sh/typescript>
+    * javascritp game: <https://play.elevatorsaga.com/>
 
-#### C++
-- **namespaces** 
-- **C++ Template Functions and Classes**
-- what is a memory leak
-- c++: <https://www.learncpp.com/>
-- what is a buffer?
-- Pointers in C and C++
-- [Function Overriding](https://www.programiz.com/cpp-programming/function-overriding)
-- Begin using Cmake and make
 
-#### Software Development
-- full git breakdown
-- Conda Enviroments
-- cmake and make
-- PySDR (for signals proccessing)
-- Developer roadmap
-- data strucutes: array, linked list, tress, stacks, queque, graphs, hash maps (these are also found on the developer roadmap) and abstract syntax trees
-- algorithms (might also be on the developer roadmap): search, sort, graphs traversals, dynamic programming, greddy algorithms3
+### C++
+* **namespaces** 
+* **C++ Template Functions and Classes**
+* what is a memory leak
+* how memory works in c/c++
+* c++: <https://www.learncpp.com/>
+* what is a buffer?
+* Pointers in C and C++
+* [Function Overriding](https://www.programiz.com/cpp-programming/function-overriding)
+* Begin using Cmake and make
+
+### Python
+* object oriented:
+    + abstraction
+    + encapsulatyion
+    + inheritance
+    + polymorphism
+
+* Python garbage collector and memory management: <https://realpython.com/python-memory-management/>
+* mutable vs immutable: <https://realpython.com/courses/immutability-python/>
+
+### Software Development
+* full git breakdown
+* start using pre-commit hooks: <https://pre-commit.com/>
+* cmake and make
+* Developer roadmap
+    * computer science: <https://roadmap.sh/computer-science>
+    * DevOps: <https://roadmap.sh/devops>
+    * CyberSecurity: <https://roadmap.sh/cyber-security>
+* data strucutes: array, linked list, tress, stacks, queque, graphs, hash maps (these are also found on the developer roadmap) and abstract syntax trees
+    * https://god-level-python.notion.site/17-Data-Structures-8870b46ffe4d45a4919a946278ef16d1
+    * neetcode: <https://neetcode.io/courses>
+* algorithms (might also be on the developer roadmap): search, sort, graphs traversals, dynamic programming, greddy algorithms3
+* Conda Enviroments
 
 #### Other Resources
 - project based learning repo: <https://github.com/practical-tutorials/project-based-learning>
@@ -112,16 +131,34 @@ from : <https://serverfault.com/questions/124517/what-is-the-difference-between-
 
 # Courses
 
-### Machine Learning
-- new Deep Learning AI: <https://www.deeplearning.ai/program/machine-learning-specialization/?utm_campaign=d>
+## Machine Learning
+* [ ] new Deep Learning AI: <https://www.deeplearning.ai/program/machine-learning-specialization/?utm_campaign=d>
 
-- <https://www.coursera.org/learn/introduction-to-machine-learning-in-production?utm_source=recommendations&utm_medium=email&utm_campaign=14810&sfmc_id=100549529&sfmc_key=0038W00001WOS7cQAH> 
-	
-- [Tensorflow Tutorials - Youtube Playlist](https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ)
-- [Udacity Course](https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187)
+* [ ] <https://www.coursera.org/learn/introduction-to-machine-learning-in-production?utm_source=recommendations&utm_medium=email&utm_campaign=14810&sfmc_id=100549529&sfmc_key=0038W00001WOS7cQAH>
+* [ ] [Udacity Course](https://www.udacity.com/course/intro-to-tensorflow-for-deep-learning--ud187)
+* [ ] [Kaggle Courses](https://www.kaggle.com/learn)
+* [ ] Neural Networks
+* [ ] Transformers
+* [ ] learn about LSTM
 
-- [Kaggle Courses](https://www.kaggle.com/learn)
-- learn about LSTM
+### Extras
+* [Tensorflow Tutorials - Youtube Playlist](https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ)
+
+## DSP and adjecent fields (Computer Vision, Filters, Controls)
+* [PySDR: A Guide to SDR and DSP using Python](https://pysdr.org/index.html)
+* Convolution
+* Mixers/uses
+* Amplifiers for Signals
+* Downsampling and Upsampling to carrier frequency
+
+#### Filters
+* Butterworth Filters
+* [Kalman and Bayesian Filters GitHub](https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/tree/ee586f5d84664383d079aa0bcb480fa78c8b0d2d)
+* Some feedaback loop on python
+* **Feeback loop** with a motor. Use the STM32. Maybe buy a motor with an encoder
+    * [example](https://www.youtube.com/watch?v=3ozgxPi_tl0)
+    * <https://www.youtube.com/watch?v=dTGITLnYAY0>
+    * Try to do the same with a raspberry and save data to a csv file, then plot it
 
 ### OpenCV
 - [Official Crash Course](https://opencv.org/opencv-free-course/)

@@ -3,7 +3,7 @@ Compilation proccess between `C` and `C++` is almost the same
 
 **Compiler &rarr; Linker &rarr; Executable**
 
-#### Compiler
+### Compiler
 1. **Preprocessor**
     - Header files on the other hand, can be opened multiple times during prepprosseing, dependingn how many source files or other header files include them
     - The compiler will run a preproccesor on the source files, this is the only time when the preprossesor and the compiler open the file.
@@ -36,7 +36,7 @@ Compilation proccess between `C` and `C++` is almost the same
 
 Most compiler errors usually come from syntax errors or logic
 
-#### Linker
+### Linker
 
 1. combine all `.obj` files into a single executable program by replacing the references of the undefined symbols with the correct addresses
 2. linking library files and programs
@@ -47,6 +47,10 @@ Most compiler errors usually come from syntax errors or logic
     ```
 
 Most errors with missing or multiple declarations happen here
+
+> Note: when compiling a c/c++ file without main function, the linker will throw up an error
+> `undefined symbols for architecture`
+> To compile several files separate and then combine them, use a `-c` flag
 
 
 ## Macros
@@ -163,10 +167,25 @@ int main() {
 
 ---
 
+## C and C++ Compilers
+* Clang, used by Apple devices
+* GNU used by Linux
+
+Some compiler flags:
+* `-c`
+* `-fpic`
+* `-Wall`
+* `-Werror`
+
+---
 
 # Compilation Methods
 
-## Make & Makefiless
+## Make & Makefiles
+
+- To preview the build proccess, use `make -n`
+
+
 **Reference: <https://opensource.com/article/18/8/what-how-makefile>**
 
 Use makefiles to build/compile projects. 
@@ -221,7 +240,10 @@ clean:
 .PHONY: all say_hello generate clean
 ```
 
-### Variables and Patterns
+#### .PHONY Targets
+
+
+#### Variables and Patterns
 declaring a variable for a makefile
 ```makefile
 cc := gcc
@@ -254,7 +276,7 @@ foo.o: foo.c
 
 clean:
   @echo "Cleaning up..."
-  rm -rvf foo.o foo
+  rm -rf foo.o foo
 ```
 another use of a variable can be used to group multiple things together for example:
 ```makefile
