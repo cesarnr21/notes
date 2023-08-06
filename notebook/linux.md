@@ -1,29 +1,55 @@
 
-# Linux Notes
+# Using Linux
+* [Using Linux](#using-linux)
+  * [Terminal Commands](#terminal-commands)
+    * [Expand Commands](#expand-commands)
+  * [Other Utilities](#other-utilities)
+      * [dpkg](#dpkg)
+    * [find and locate](#find-and-locate)
+    * [SSH and SCP](#ssh-and-scp)
+    * [VNC Server](#vnc-server)
+      * [Usage](#usage)
+      * [Establish Secure Connection Using SSH](#establish-secure-connection-using-ssh)
+  * [Vim](#vim)
+    * [Useful Commands](#useful-commands)
+      * [Visual Modes](#visual-modes)
+      * [Find and Replace](#find-and-replace)
+        * [quickest way](#quickest-way)
+        * [advanced](#advanced)
+    * [Configuring Vim](#configuring-vim)
+  * [Bash and Shell](#bash-and-shell)
+    * [Create Executable Files](#create-executable-files)
+    * [Source vs execting bash scripts](#source-vs-execting-bash-scripts)
+  * [Cron Jobs](#cron-jobs)
+    * [Systax/Commands](#systaxcommands)
+* [Linux Notes](#linux-notes)
+  * [Users and User groups](#users-and-user-groups)
+  * [Daemons and Services](#daemons-and-services)
 
 ## Terminal Commands
-- To open the terminal shortcut `CTRL` + `ALT` + `T`
-- To suspend a command use `CTRL` + `Z`
-- to kill command use `CTRL` + `C`
-- To reverse search and search previous commands: `CTRL` + `R` 
-- To clear terminal line `CTRL` + `U` and use `CTRL` to `Y` to paste
-- To list the running jobs/commands use `jobs`
-- To kill an ongoing job/command use `kill %#` with the '#' number you got from `jobs`
-- To delete a file `rm filename.filetype`
-- To make a copy of a file use `cp filename.filetype newname.type`
-- To delete a file or a directory `rm -r directory`
-- To make a copy of a directory use `cp directory new_directory_name`
-- To print current directory `pwd`
-- To rename or move a file or directory use `mv old_name new_name`
-- To move a directory you can do `mv old/path new/path`
-- To create a new directory use 'mkdir' `mkdir new_directory_name`
-- To move to the previous directory use `cd -`
+* To open the terminal shortcut `CTRL` + `ALT` + `T`
+* To suspend a command use `CTRL` + `Z`
+* to kill command use `CTRL` + `C`
+* To reverse search and search previous commands: `CTRL` + `R` 
+    - To cycle throught the commands, keep using `CTRL` + `R` 
+* To clear terminal line `CTRL` + `U` and use `CTRL` to `Y` to paste
+* To list the running jobs/commands use `jobs`
+* To kill an ongoing job/command use `kill %#` with the '#' number you got from `jobs`
+* To delete a file `rm filename.filetype`
+* To make a copy of a file use `cp filename.filetype newname.type`
+* To delete a file or a directory `rm -r directory`
+* To make a copy of a directory use `cp directory new_directory_name`
+* To print current directory `pwd`
+* To rename or move a file or directory use `mv old_name new_name`
+* To move a directory you can do `mv old/path new/path`
+* To create a new directory use 'mkdir' `mkdir new_directory_name`
+* To move to the previous directory use `cd -`
 
-- To open a file with a default application `xdg-open filename.filetype`
-- To open a folder/directory with the file manager use `xdg
--open directory`
-- To open the current directory in the file manage use `xdg-open .`
-- Print IP addressess `hostname -I`
+* To open a file with a default application `xdg-open filename.filetype`
+* To open a folder/directory with the file manager use `xdg
+* open directory`
+* To open the current directory in the file manage use `xdg-open .`
+* Print IP addressess `hostname -I`
 
 ### Expand Commands
 - save command output to file: 
@@ -126,27 +152,28 @@ Then, on Mac open **Screen Sharing** and connect to: `vnc://localhost:5900`
 ## Vim
 ### Useful Commands
 To enter commands, it is imporant to be in command mode
-- Press `ESC` to enter **command mode**
-- `i` or `a`: enter **editing mode**. `a` to append
-- `:q` close file
-- `:wq`: save and close a file
-- `:q!` close and discard changes
-- `y` to copy and `p` to paste
-- `d` or `x` to cut and `p` to paste
-- `delete` to just delete
-- `u` to undo changes
-- `CRTL` + `r` to reapply changes
-- To search use `/[ word ]` and then either `n` or `N` to keep searching for the next instance of the pattern
-- To go to line use: `[ line# ]G`. example to go line 124, use: `124G`
-- To move foward use `w` and to move backward use `b`
+* Press `ESC` to enter **command mode**
+* `i` or `a`: enter **editing mode**. `a` to append
+* `:q` close file
+* `:wq`: save and close a file
+* `:q!` close and discard changes
+* `y` to copy and `p` to paste
+* `d` or `x` to cut and `p` to paste
+* `delete` to just delete
+* `u` to undo changes
+* `CRTL` + `r` to reapply changes
+* To search use `/[ word ]` and then either `n` or `N` to keep searching for the next instance of the pattern
+* To go to line use `:[ line# ]`. example to go line 124, use: `:124`
+    - Or `[ line# ]G`. example to go line 124, use: `124G`
+* To move foward use `w` and to move backward use `b`
 
 #### Visual Modes
-- `v` to enter **visual mode**. be able to select multiple lines of text.
+* `v` to enter **visual mode**. be able to select multiple lines of text.
     - `SHIFT` + `v` to enter visual line (selects entire lines/rows)
     - `CTRL` + `v` to enter visual block (selects rows and columns independently)
-- To **comment multiple lines**, enter visual block and select all lines, then `SHIFT` + `i` to enter insert mode, add `#` from the first line, then `ESC` and after a moment, the change will take place.
+* To **comment multiple lines**, enter visual block and select all lines, then `SHIFT` + `i` to enter insert mode, add `#` from the first line, then `ESC` and after a moment, the change will take place.
     - To uncomment, select the `#` and the spaces colums, then just delete.
-- To **indent multiple lines**, enter visual block, select lines, then insert mode with `SHIFT` + `i`, add indentation, then `ESC`.
+* To **indent multiple lines**, enter visual block, select lines, then insert mode with `SHIFT` + `i`, add indentation, then `ESC`.
 
 #### Find and Replace
 ##### quickest way
@@ -157,10 +184,10 @@ To enter commands, it is imporant to be in command mode
 
 ##### advanced
 syntax: `:s/[ search_word ]/[ replacement ]/[ options ]`
-- to replace all occurances in one line use `g` option
+* to replace all occurances in one line use `g` option
     `:s/[ search_word ]/[ replacement ]/g`
-- entire file: `:%s/[ search_word ]/[ replacement ]/g`
-- within lines: `:[start_line][end_lind]s/[ search_word ]/[ replacement ]/g`
+* entire file: `:%s/[ search_word ]/[ replacement ]/g`
+* within lines: `:[start_line][end_lind]s/[ search_word ]/[ replacement ]/g`
 
 ### Configuring Vim
 Edits file in `~/.vimrc`
@@ -232,6 +259,9 @@ what does this entail, difference between `bash file.sh` and `./file.sh`?
 - to make a file an executetable: `sudo chmod +x [ file_name ]`
 - to remove executetable profile from file: `sudo chmod -x [ file_name ]`
 
+### Source vs execting bash scripts
+<https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it>
+
 ## Cron Jobs
 nice overview: <https://serverfault.com/questions/449651/why-is-my-crontab-not-working-and-how-can-i-troubleshoot-it?newreg=fbdb96de785143f1a1ca0290d42c4e4e>
 - **cron** is the daemon that executed schedule commands
@@ -268,3 +298,10 @@ To help with timing setup, use this website: **<https://crontab.guru/>**
 
 > **Keep in Mind**
 > Cron does not load `.bashrc` so it may be useful to source if the scripts require env variables set there
+
+# Linux Notes
+## Users and User groups
+
+## Daemons and Services
+
+
