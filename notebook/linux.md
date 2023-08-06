@@ -1,5 +1,30 @@
 
-# Linux Notes
+# Using Linux
+* [Using Linux](#using-linux)
+  * [Terminal Commands](#terminal-commands)
+    * [Expand Commands](#expand-commands)
+  * [Other Utilities](#other-utilities)
+      * [dpkg](#dpkg)
+    * [find and locate](#find-and-locate)
+    * [SSH and SCP](#ssh-and-scp)
+    * [VNC Server](#vnc-server)
+      * [Usage](#usage)
+      * [Establish Secure Connection Using SSH](#establish-secure-connection-using-ssh)
+  * [Vim](#vim)
+    * [Useful Commands](#useful-commands)
+      * [Visual Modes](#visual-modes)
+      * [Find and Replace](#find-and-replace)
+        * [quickest way](#quickest-way)
+        * [advanced](#advanced)
+    * [Configuring Vim](#configuring-vim)
+  * [Bash and Shell](#bash-and-shell)
+    * [Create Executable Files](#create-executable-files)
+    * [Source vs execting bash scripts](#source-vs-execting-bash-scripts)
+  * [Cron Jobs](#cron-jobs)
+    * [Systax/Commands](#systaxcommands)
+* [Linux Notes](#linux-notes)
+  * [Users and User groups](#users-and-user-groups)
+  * [Daemons and Services](#daemons-and-services)
 
 ## Terminal Commands
 * To open the terminal shortcut `CTRL` + `ALT` + `T`
@@ -273,3 +298,10 @@ To help with timing setup, use this website: **<https://crontab.guru/>**
 
 > **Keep in Mind**
 > Cron does not load `.bashrc` so it may be useful to source if the scripts require env variables set there
+
+# Linux Notes
+## Users and User groups
+
+## Daemons and Services
+
+

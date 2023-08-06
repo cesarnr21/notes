@@ -2,6 +2,16 @@
 - **[Learn Git Branching](https://learngitbranching.js.org/?locale=en_US)**
 - **[A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)**
 
+### Learn More
+* [ ] `git stash`
+* [ ] `git commit --amend`
+* [ ] `git rebase -i` and `git rebase --continue`
+    + `drop`
+    + `squash`
+    + `edit`
+    + `pick`
+* [ ] `git fetch`
+* [ ] what `git tags` for
 
 ### Submodules
 To add a git submodule use: `git submodule add git@github.com:user/path`
