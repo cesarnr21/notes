@@ -100,24 +100,12 @@ $ find [ start_dir ] [ options ] [ search term ]
 can use `locate -c filename` to count all instances
 
 ### SSH and SCP
-
-To use ssh `ssh username@ip.address`
-
-Also, for computers in the same network:
-```sh
-$ ssh host_name.local       # or host_name.lan
+delete fingerprint from `known_hosts`
+```
+ssh-keygen -R [ ip_address ]
 ```
 
-if this doesn't work, then:
-```sh
-$ sudo apt-get install avahi-daemon avahi-discover avahi-utils libnss-mdns mdns-scan
-$ sudo systemctl restart avahi-daemon
-$ sudo systemctl enable avahi-daemon
-```
-**Using SCP to Transfer Files from current device to new device**
-```sh
-$ scp -C -r /home/user/path user@ip.address:/home/user/path
-```
+> How is ssh secure and how do the private and public keys work?
 
 
 ### VNC Server
@@ -236,7 +224,7 @@ echo $variable
 ```
 
 example script
-```sh
+```bash
 #!/bin/bash
 
 OS="$(uname)"
@@ -246,6 +234,14 @@ if [ $OS == "Darwin" ]; then
 elif [ $OS == "Linux" ]; then
     printf "OS = $OS, tis is a linux system \n"
 fi
+```
+
+```bash
+# get location of script
+
+DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# or 
+DIR="$(cd -P "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ```
 
 there is more to learn about shell files and what you can do with them.

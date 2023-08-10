@@ -406,36 +406,38 @@ for (int i = 0; i < 2; ++i) {
 
 
 
-Different Operators
------------------------
+## Different Operators
+
 % -> will give you the remainder after an integer division. example:
 ```c
 int a = 10, b = 20;
 int  c = b%a
 // the output will be c = 0
-== ----- checks if equal to
-!= ----- checks if the value are unequal *this is different from a=!b. here the value is simply set to be the opposite of the boolean value of b. so only TRUE or FALSE work*
-* >= ----- greater than or equal
-* <= ----- less than or equal
-* && ----- AND operator, meaning that both conditions must be true
-* || ----- OR operator, meaning that only one condition needs to be true
-* ! ------ this is the opposite. 
 ```
-for example:
-```c
-if (A && B) is TRUE, than !(A && B) is FALSE
-```
-* `+=` ----- add and assign value. example: c += a is equal to c = c + a
-* `-= `----- subtract and assign. see above for example
-* `*=` ----- multiply and assign
-* `/=` ----- divide and assign
-* `&` ------ returns the address of a varable. example: &a give the address of a
+* `==` &rarr; checks if equal to
+* `!=` &rarr; checks if the value are unequal 
+> this is different from a=!b. here the value is simply set to be the opposite of the boolean value of b. so only TRUE or FALSE work
+
+* `>=` &rarr; greater than or equal
+* `<=` &rarr; less than or equal
+* `&&` &rarr; AND operator, meaning that both conditions must be true
+* `||` &rarr; OR operator, meaning that only one condition needs to be true
+* `!` &rarr; this is the opposite. 
+  for example:
+  ```c
+  if (A && B) is TRUE, then !(A && B) is FALSE
+  ```
+* `+=` &rarr; add and assign value. example: c += a is equal to c = c + a
+* `-=` &rarr; subtract and assign. see above for example
+* `*=` &rarr; multiply and assign
+* `/=` &rarr; divide and assign
+* `&` &rarr; returns the address of a varable. example: &a give the address of a
 * `sizeof()` returns the size of the variable
 
 > note: need more info in these last two
 
-* `*`------- pointer to a variable. example: `*a;`
-* `?:` ----- ternary operator. works just as an `if/else statement`. Here is the syntaxt: 
+* `*` &rarr; pointer to a variable. example: `*a;`
+* `?:` &rarr; ternary operator. works just as an `if/else statement`. Here is the syntaxt: 
 `variable = Expression1 ? Expression2 : Expression3`. If expression1 is true, the expression 2 is executed and return, if false then expression3 is selected. working example below:
 
 ```c

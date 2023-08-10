@@ -1093,46 +1093,5 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-### Math Library
-
-use <import math>
-
-**Power/exponents**
-Use `number**power`
-use the math.pow(number, power). example:
-```py
-import math 
-
-# input a number 
-number = int (raw_input ("Enter an integer number: "))
-
-# calculate square
-square = int(math.pow (number, 2))
-
-# print
-print "Square of {0} is {1} ".format (number, square)
-```
-**square root** ------> math.sqrt(n)
-**value of PI** ------> math.pi
-**cos or sin**  ------> math.cos(n)
-**exponential** ------> math.exp(n)
-
-### Random Library
-picks random things. example of uses below:
-```py
-import random
-
-#pick a random number between a range
-print(random.randrange(10, 20))
-
-x = ['a','b','c','d','e']
-#pick an item from the sequence above
-print(random.choice(x))
-
-#will shuffle the items of the sequence
-random.shuffle(x)
-print(X)
-
-#print anything, a random element
-print(random.random())
-```
+### Textual
+Develop Terminal based apps: <https://textual.textualize.io/>

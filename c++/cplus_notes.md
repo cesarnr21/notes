@@ -1,14 +1,35 @@
 
 # C++ Language Notes
 
-- **to learn:**
-    - [ ] review the `#ifndef` and `#endif` macros for header files, etc. bottom of this site: <https://www.geeksforgeeks.org/header-files-in-c-cpp-and-its-uses/amp/>
-    - [ ] using the linker, working with header files
-    - [ ] using `extern`
-    - [ ] using **CMake** and **Make**
-    - [ ] multi-threading
+* [C++ Language Notes](#c-language-notes)
+  * [To learn](#to-learn)
+  * [Intro](#intro)
+    * [Basic Rules](#basic-rules)
+      * [Namespaces](#namespaces)
+      * [Type Conversion](#type-conversion)
+      * [Function Overloading](#function-overloading)
+      * [C-Strings](#c-strings)
+      * [String Object](#string-object)
+      * [Structures and Functions](#structures-and-functions)
+    * [Pointers](#pointers)
+      * [Structures and Unions](#structures-and-unions)
+  * [Objects and Classes](#objects-and-classes)
+    * [Constructors](#constructors)
+    * [Private and Public Members](#private-and-public-members)
+    * [Inheritance](#inheritance)
+      * [protected members](#protected-members)
+      * [Multilevel Inheritance](#multilevel-inheritance)
+      * [Multiple Inheritance](#multiple-inheritance)
+    * [Friend Functions and Friend Classes](#friend-functions-and-friend-classes)
+  * [Templates](#templates)
 
 
+## To learn
+- [ ] review the `#ifndef` and `#endif` macros for header files, etc. bottom of this site: <https://www.geeksforgeeks.org/header-files-in-c-cpp-and-its-uses/amp/>
+- [ ] using the linker, working with header files
+- [ ] using `extern`
+- [ ] using **CMake** and **Make**
+- [ ] multi-threading
 
 **References:**
 - **[Programiz: Learn C Programming](https://www.programiz.com/c-programming)**
