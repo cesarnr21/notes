@@ -37,6 +37,7 @@
 * tech inteview handbook: <https://www.techinterviewhandbook.org/>
 * system design primer: <https://github.com/donnemartin/system-design-primer>
 * the amazon star method: <https://www.amazon.jobs/es/landing_pages/in-person-interview>
+* Designing Data Intersive Applications
 * these problems: <https://cses.fi/problemset/>
 * [Facebook coding challenges](https://www.facebookrecruiting.com/portal/coding_puzzles)
 * Machine Learning Specialization Coursera repo: <https://github.com/greyhatguy007/Machine-Learning-Specialization-Coursera>

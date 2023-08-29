@@ -4,25 +4,33 @@
 
 ### Learn More
 * [ ] `git stash`
-* [ ] `git commit --amend`
+    + `apply`
+    + `pop`
+    + `clean`
+* [ ] `git commit --amend` vs using `git rebase`
 * [ ] `git rebase -i` and `git rebase --continue`
     + `drop`
     + `squash`
     + `edit`
     + `pick`
 * [ ] `git fetch`
-* [ ] what `git tags` for
+* [ ] Using `git tags`
 
-### Submodules
-To add a git submodule use: `git submodule add git@github.com:user/path`
-this creates a `.gitmodules` file that sotres the mapping between the project's URL and the modules
+### Table of Contents
+* [Notes](#notes)
+  * [Some setup](#some-setup)
+  * [githooks](#githooks)
+* [Basic Instructions:](#basic-instructions)
+    * [Git Pull vs Fetch](#git-pull-vs-fetch)
+    * [Difference between HEAD, remote, and main](#difference-between-head-remote-and-main)
+    * [Squash Commits](#squash-commits)
+    * [Squash Commits and Rebase with Main](#squash-commits-and-rebase-with-main)
+    * [Sync Forked Repositories](#sync-forked-repositories)
+    * [Submodules](#submodules)
+    * [Exclude Files for Commit](#exclude-files-for-commit)
 
-to load the submodule, use `git submodule init` and then `git submodule update`
 
-### Exclude Files for Commit
-To untrack a directory use `git rm --cached file_name.file_type`
-To ignore files add them either to `.gitignore` or to `.git/info/exclude`
-Difference: `.gitignore` is pushed to the repo whereas `.git/info/exclude` is not
+# Notes
 
 ## Some setup
 - Set **vim** as default git monitor 
@@ -48,16 +56,32 @@ Difference: `.gitignore` is pushed to the repo whereas `.git/info/exclude` is no
     git config --global mergetool.prompt false
     ```
 
+## githooks
+githooks can be added under the `.git/hooks/` folder, however these are tracked by 
+
 ---------------------------------------------------
 
 # Basic Instructions:
 To see basic commands use `git --help`. To see help with specific command, do `git [ command ] --help`
+
+
 - `git init`: creates a new repository
 - `git clone`: clones the repository to the current directory
 - `git status`: shows you the changes made and the ones that are added
+
+ 
 - `git add [ filename.filetype ]`: adds the actions to the working tree
     - `git add --all` to add all changes to working tree
     - `git restore --staged [ file_name ]` to remove from working tree
+
+| **Command** | **New Files** | **Modified Files** | **Deleted Files** | **Notes** |
+|---|---|---|---|---|
+| `git add --all` or <br>`git add -A` | :white_check_mark: | :white_check_mark: | :white_check_mark: | stage all changes (new, modified, deleted files) |
+| `git add .` | :white_check_mark: | :white_check_mark: | :white_check_mark: | stage all changes in current directory |
+| `git add --update` or <br>`git add -u` | :x: | :white_check_mark: | :white_check_mark: | stage modified and deleted files that <br>were already being tracked |
+| `git add --ignore-removal` | :white_check_mark: | :white_check_mark: | :x: | staged new and modified files (no deletetions) |
+
+
 - `git branch`: shows you the lists of branches and highlights current branch
     - `git branch -r` shows all remote branches
 - `git branch [ branch_name ]`: creates a new branch
@@ -121,3 +145,14 @@ $ git push --force
 
 ### Sync Forked Repositories
 **<https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github>**
+
+### Submodules
+To add a git submodule use: `git submodule add git@github.com:user/path`
+this creates a `.gitmodules` file that sotres the mapping between the project's URL and the modules
+
+to load the submodule, use `git submodule init` and then `git submodule update`
+
+### Exclude Files for Commit
+To untrack a directory use `git rm --cached file_name.file_type`
+To ignore files add them either to `.gitignore` or to `.git/info/exclude`
+Difference: `.gitignore` is pushed to the repo whereas `.git/info/exclude` is not
