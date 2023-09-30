@@ -1,5 +1,7 @@
 import math
-import numpy as np #NOTE: use numpy to make calculations faster
+import numpy as np
+
+# TODO: rewrite these functions to use numpy arrays as inputs and speed up the math
 
 # Mean Average Error
 def MAE(actual, predictions):
@@ -12,6 +14,7 @@ def MAE(actual, predictions):
     result = result / n
     return result
 
+
 # Mean Average Percentage Error
 def MAPE(actual, predictions):
     n = len(actual)
@@ -23,6 +26,7 @@ def MAPE(actual, predictions):
     result = result / n
     return result
 
+
 # Mean Squared Error
 def MSE(actual, predictions):
     n = len(actual)
@@ -33,6 +37,7 @@ def MSE(actual, predictions):
     
     result = result / n
     return result
+
 
 # Root Mean Squared Error
 def RMSE(actual, predictions):
